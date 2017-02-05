@@ -2,5 +2,22 @@ import { createStore, compse } from 'redux';
 import { syncHistoryWithStore} from 'react-router-redux';
 import { browserHistory }      from 'react-router';
 
-//Importing the root reducer
+//Import the root reducer
 import  rootReducer from './reducers/index';
+
+//Import Data
+import comments from './data/comments';
+import posts from './data/posts';
+
+//Create an objetc for default data
+const defaultState = {
+	posts,
+	comments
+};
+
+const store = createStore(rootReducer, defaultState);
+
+export const history = syncHistoryWithStore(browserHistory, store);
+
+//another way to export a consts to a file
+export default store;
